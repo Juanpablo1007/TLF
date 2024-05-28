@@ -7,5 +7,5 @@ digraph {
 	q0 -> q1 [label=intenta]
 	q0 -> q1 [label=atrapa]
 	q0 -> q1 [label=tirarExcepcion]
-	label="Cantidad de palabras de excepcion en el codigo = 2"
+	label="Cantidad de palabras de excepcion en el codigo = 3"
 }

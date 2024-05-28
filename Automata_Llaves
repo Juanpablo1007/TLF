@@ -8,5 +8,5 @@ digraph {
 	q0 -> q1 [label="{"]
 	q1 -> q1 [label="C.O.S"]
 	q1 -> q2 [label="}"]
-	label="Cantidad de llaves en el codigo = 2"
+	label="Cantidad de llaves en el codigo = 4"
 }

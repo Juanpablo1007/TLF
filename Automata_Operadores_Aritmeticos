@@ -8,5 +8,5 @@ digraph {
 	q0 -> q1 [label=men]
 	q0 -> q1 [label=por]
 	q0 -> q1 [label=div]
-	label="Cantidad de sum/men/por/div en el codigo = 4"
+	label="Cantidad de sum/men/por/div en el codigo = 1"
 }

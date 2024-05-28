@@ -67,10 +67,10 @@ def generar_automatas(tokens, categoria):
 
         # Agregar transiciones
         dot.edge('start', 'q1')
-        dot.edge('q1', 'q2', label='!*')
+        dot.edge('q1', 'q2', label='/*')
         dot.edge('q2', 'q2', label='C.O.S')
         dot.edge('q2', 'q3', label='C.O.S')
-        dot.edge('q3', 'q4', label='*!')
+        dot.edge('q3', 'q4', label='*/')
 
         # Agregar texto adicional
         dot.attr(label='Cantidad de comentarios de bloque en el código = {}'.format(len(tokens)))
@@ -139,9 +139,10 @@ def generar_automatas(tokens, categoria):
                 
             else:
                 # Agregar transiciones
+                print(numero)
                 partes = numero.split('.')
                 parte_entera = partes[0]
-                parte_decimal = partes[1]
+                parte_decimal = partes[1] 
                 dot.edge('q0', 'q'+str(j), label=numero[0])
                 if len(parte_entera) > 1:
                     dot.edge('q'+str(j), 'q'+str(j), label=','.join(parte_entera[1:]))

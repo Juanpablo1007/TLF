@@ -7,5 +7,5 @@ digraph {
 	q0 -> q1 [label="\nlinea"]
 	q0 -> q1 [label="\tlinea"]
 	q1 -> q1 [label="C.O.S, \nlinea, \tlinea"]
-	label="Cantidad de espacios en blanco en el codigo = 33"
+	label="Cantidad de espacios en blanco en el codigo = 32"
 }

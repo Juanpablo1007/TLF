@@ -4,6 +4,11 @@ digraph {
 	q0 [label=q0]
 	q1 [label=q1 shape=doublecircle]
 	start -> q0
-	q0 -> q1 [label=igual]
-	label="Cantidad de igual en el codigo = 1"
+	q0 -> q1 [label=same]
+	q0 -> q1 [label=dife]
+	q0 -> q1 [label=may]
+	q0 -> q1 [label=meno]
+	q0 -> q1 [label=menosame]
+	q0 -> q1 [label=maysame]
+	label="Cantidad de same/dife/may/meno/menosame/maysame en el codigo = 1"
 }

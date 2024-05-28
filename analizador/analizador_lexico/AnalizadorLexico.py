@@ -83,13 +83,26 @@ class AnalizadorLexico:
 
     def es_numero_real(self, codigo, posicion):
         i = posicion
-        if codigo[i] == '.':
+        # Primero, verifica si el caracter actual es un dígito.
+        if codigo[i].isdigit():
+            while i < len(codigo) and codigo[i].isdigit():
+                i += 1
+            # Si el siguiente caracter es un punto, continúa analizando los dígitos.
+            if i < len(codigo) and codigo[i] == '.':
+                i += 1
+                while i < len(codigo) and codigo[i].isdigit():
+                    i += 1
+        # Si el caracter actual es un punto, verifica si el siguiente caracter es un dígito.
+        elif codigo[i] == '.':
             i += 1
-        while i < len(codigo) and codigo[i].isdigit():
-            i += 1
-        if i > posicion and (codigo[i - 1] != '.' or (codigo[i - 1] == '.' and i > posicion + 1)):
-            return True, codigo[posicion:i]
-        return False, None
+            if i < len(codigo) and codigo[i].isdigit():
+                while i < len(codigo) and codigo[i].isdigit():
+                    i += 1
+            else:
+                return False, None
+        else:
+            return False, None
+        return True, codigo[posicion:i]
 
     
 

@@ -6,9 +6,9 @@ digraph {
 	q3 [label=q3]
 	q4 [label=q4 shape=doublecircle]
 	start -> q1
-	q1 -> q2 [label="!*"]
+	q1 -> q2 [label="/*"]
 	q2 -> q2 [label="C.O.S"]
 	q2 -> q3 [label="C.O.S"]
-	q3 -> q4 [label="*!"]
+	q3 -> q4 [label="*/"]
 	label="Cantidad de comentarios de bloque en el código = 1"
 }
