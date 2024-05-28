@@ -19,18 +19,24 @@ class AnalizadorLexico:
             (r'\d+', 'NUMERO_NATURAL'),
             # Palabras reservadas
             (r'\b(si|entonces|para|mientras|function|return)\b', 'PALABRA_RESERVADA'),
-            # Identificador
-            (r'\b[a-zA-Z_]\w*\b', 'IDENTIFICADOR'),
             # Operadores de incremento/decremento
-            (r'(sum\s*\(\s*sum\s*sum\s*\)|\s*men\s*\(\s*men\s*men\s*\))', 'OPERADOR_INCREMENTO_DECREMENTO'),
+            (r'(sumsum|menmen)', 'OPERADOR_INCREMENTO_DECREMENTO'),
             # Operadores de comparación
             (r'(same|dife|may|meno|menosame|maysame)', 'OPERADOR_COMPARACION'),
             # Operador de asignación
-            (r'((sum|men|por|div)?\s*same)|same', 'OPERADOR_ASIGNACION'),
+            (r'igual', 'OPERADOR_ASIGNACION'),
             # Operadores aritméticos
             (r'(sum|men|por|div)', 'OPERADOR_ARITMETICO'),
             # Operadores lógicos
             (r'(AND|OR)', 'OPERADOR_LOGICO'),
+            # Palabra para excepciones
+            (r'\b(intenta|atrapa|tirarExcepcion)\b', 'PALABRA_EXCEPCION'),
+            # Palabra para enteros
+            (r'\b(entr)\b\([\w\d]*\)', 'PALABRA_ENTERO'),
+            # Palabra para reales
+            (r'\b(panas)\b\([\w\d]*\)', 'PALABRA_REAL'),
+            # Identificador
+            (r'\b[a-zA-Z_]\w*\b', 'IDENTIFICADOR'),
             # Comentario de múltiples líneas
             (r'!\*[\s\S]*?\*!', 'COMENTARIO_EN_BLOQUE'),
             # Comentario de línea
@@ -45,21 +51,18 @@ class AnalizadorLexico:
             (r',', 'SEPARADOR'),
             # Cadena de caracteres
             (r'"[^"]*"', 'CADENA_CARACTERES'),
-            # Palabra para excepciones
-            (r'\b(intenta|atrapa|tirarExcepcion)\b', 'PALABRA_EXCEPCION'),
-            # Palabra para enteros
-            (r'\b(entr)\b\([\w\d]*\)', 'PALABRA_ENTERO'),
-            # Palabra para reales
-            (r'\b(panas)\b\([\w\d]*\)', 'PALABRA_REAL'),
             # Espacios en blanco
             (r'\s+', 'ESPACIO_EN_BLANCO'),
         ]
 
         while posicion < len(codigo):
-            while posicion < len(codigo) and codigo[posicion].isspace():
+            if codigo[posicion].isspace():
                 if codigo[posicion] == '\n':
                     linea += 1
+                lexema = codigo[posicion]
+                self.tokens.append(Token(lexema, 'ESPACIO_EN_BLANCO', linea, posicion))
                 posicion += 1
+                continue
 
             match = None
 

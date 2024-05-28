@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import scrolledtext, ttk
+from collections import defaultdict
+from gui.Graficar import generar_automatas
 from analizador_lexico.AnalizadorLexico import AnalizadorLexico
 
 class App:
@@ -37,6 +39,7 @@ class App:
         tokens = analizador.analizar_codigo(codigo)
 
         self.mostrar_tokens(tokens)
+        self.generar_automatas(tokens)
 
     def mostrar_tokens(self, tokens):
         for item in self.tabla_tokens.get_children():
@@ -64,6 +67,21 @@ class App:
                 categoria = 'ESPACIO'
 
             self.tabla_tokens.insert("", "end", values=(token.lexema, categoria, f"({token.linea}, {token.posicion})"))
+
+    def agrupar_tokens_por_categoria(self, tokens):
+        tokens_por_categoria = defaultdict(list)
+
+        for token in tokens:
+            tokens_por_categoria[token.categoria].append(token)
+
+        return tokens_por_categoria
+        
+    def generar_automatas(self, tokens):
+        tokens_por_categoria = self.agrupar_tokens_por_categoria(tokens)
+
+        for categoria in tokens_por_categoria:
+            generar_automatas(tokens_por_categoria[categoria], categoria)
+        
 
 if __name__ == "__main__":
     root = tk.Tk()

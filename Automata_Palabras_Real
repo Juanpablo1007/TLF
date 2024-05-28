@@ -1,0 +1,14 @@
+digraph {
+	node [shape=circle]
+	start [label="" color=black fillcolor=black shape=circle style=filled width=0.1]
+	q0 [label=q0]
+	q1 [label=q1]
+	q2 [label=q2]
+	q3 [label=q3 shape=doublecircle]
+	start -> q0
+	q0 -> q1 [label=panas]
+	q1 -> q2 [label="("]
+	q2 -> q2 [label="C.O.S"]
+	q2 -> q3 [label=")"]
+	label="Cantidad de palabras de real en el codigo = 1"
+}

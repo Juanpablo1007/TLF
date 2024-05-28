@@ -1,0 +1,19 @@
+digraph {
+	node [shape=circle]
+	start [label="" color=black fillcolor=black shape=circle style=filled width=0.1]
+	q0 [label=q0]
+	q1 [label=q1 shape=doublecircle]
+	start -> q0
+	q0 -> q1 [label=si]
+	q0 -> q1 [label=entonces]
+	q0 -> q1 [label=para]
+	q0 -> q1 [label=mientras]
+	q0 -> q1 [label=function]
+	q0 -> q1 [label=return]
+	label="Cantidad de si en el codigo = 1
+Cantidad de entonces en el codigo = 1
+Cantidad de para en el codigo = 1
+Cantidad de mientras en el codigo = 1
+Cantidad de function en el codigo = 1
+Cantidad de return en el codigo = 1"
+}
