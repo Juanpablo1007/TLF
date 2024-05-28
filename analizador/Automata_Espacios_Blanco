@@ -1,0 +1,11 @@
+digraph {
+	node [shape=circle]
+	start [label="" color=black fillcolor=black shape=circle style=filled width=0.1]
+	q0 [label=q0]
+	q1 [label=q1 shape=doublecircle]
+	start -> q0
+	q0 -> q1 [label="\nlinea"]
+	q0 -> q1 [label="\tlinea"]
+	q1 -> q1 [label="C.O.S, \nlinea, \tlinea"]
+	label="Cantidad de espacios en blanco en el codigo = 10"
+}
